@@ -1,0 +1,35 @@
+{
+  "business_name": "Bloom Aesthetics Clinic",
+  "hours": "Monday to Saturday, 9am to 7pm",
+  "services": [
+    {
+      "name": "Botox",
+      "price_from": "£200",
+      "details": "Anti-wrinkle injections. Results last 3-4 months."
+    },
+    {
+      "name": "Dermal Fillers",
+      "price_from": "£250",
+      "details": "Lip, cheek, and jawline fillers. Results last 6-12 months."
+    },
+    {
+      "name": "Consultation",
+      "price_from": "Free",
+      "details": "Free initial consultation to discuss treatment options."
+    }
+  ],
+  "booking": {
+    "methods": ["WhatsApp", "website"],
+    "cancellation_policy": "24 hours notice required for cancellations"
+  },
+  "escalation_triggers": [
+    "complaint",
+    "medical question",
+    "pricing negotiation",
+    "more than 2 unanswered questions"
+  ],
+  "contact": {
+    "whatsapp": "Available via WhatsApp",
+    "website": "Available via website booking"
+  }
+}
