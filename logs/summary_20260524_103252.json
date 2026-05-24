@@ -1,0 +1,15 @@
+{
+  "customer_intent": "The customer wanted to inquire about Botox prices and also asked about laser hair removal.",
+  "details_collected": {
+    "name": null,
+    "treatment_interest": "Botox and laser hair removal",
+    "booking_intent": "unclear",
+    "timeframe": null
+  },
+  "sop_gaps": [
+    "Laser hair removal prices and details"
+  ],
+  "escalation_occurred": true,
+  "escalation_reason": "Out of scope question",
+  "recommended_next_action": "Human team should contact the customer to discuss Botox and laser hair removal prices and answer any further questions."
+}

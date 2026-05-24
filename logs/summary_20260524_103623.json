@@ -1,0 +1,13 @@
+{
+  "customer_intent": "The customer wanted to book a filler treatment. They are considering this treatment and have been provided with some initial information.",
+  "details_collected": {
+    "name": null,
+    "treatment_interest": "Dermal Fillers",
+    "booking_intent": "yes",
+    "timeframe": null
+  },
+  "sop_gaps": [],
+  "escalation_occurred": true,
+  "escalation_reason": "Customer expressed frustration/complaint (detected: 'unacceptable')",
+  "recommended_next_action": "Follow up with the customer to gather more information and finalize the booking"
+}

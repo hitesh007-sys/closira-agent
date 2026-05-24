@@ -1,0 +1,25 @@
+{
+  "session_id": "20260524_103252",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello! Welcome to Bloom Aesthetics Clinic. \ud83c\udf38 How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "What are your Botox prices?"
+    },
+    {
+      "role": "assistant",
+      "content": "Our Botox treatments start from \u00a3200. The results typically last 3-4 months. May I ask what brings you in today \u2014 is this your first time considering this treatment?"
+    },
+    {
+      "role": "user",
+      "content": "do you offer laser hair removal?"
+    },
+    {
+      "role": "assistant",
+      "content": "I want to make sure you get the best support possible. I'm connecting you with a member of our team right now \u2014 they'll be in touch shortly. Thank you for your patience. \ud83c\udf38"
+    }
+  ]
+}

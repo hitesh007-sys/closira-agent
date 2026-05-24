@@ -1,6 +1,6 @@
 import json
 import os
-from openai import OpenAI
+from groq import Groq
 from dotenv import load_dotenv
 
 from sop import load_sop
@@ -12,13 +12,13 @@ from logger import log_escalation, log_summary
 load_dotenv()
 
 MAX_UNANSWERED = 2
-MODEL = "gpt-4o"
+MODEL = "llama-3.3-70b-versatile"
 
 
 class ClosiraAgent:
     def __init__(self, session_id: str):
         self.session_id = session_id
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.sop_text = load_sop()
         self.system_prompt = get_system_prompt(self.sop_text)
         self.history = []
@@ -27,9 +27,8 @@ class ClosiraAgent:
         self.unanswered_count = 0
         self.stage = "faq"
 
-    def _call_openai(self, messages: list) -> str:
-        """Make API call to OpenAI. Returns raw text content."""
-        # OpenAI takes system prompt as first message in the messages array
+    def _call_groq(self, messages: list) -> str:
+        """Make API call to Groq. Returns raw text content."""
         full_messages = [{"role": "system", "content": self.system_prompt}] + messages
         response = self.client.chat.completions.create(
             model=MODEL,
@@ -45,7 +44,6 @@ class ClosiraAgent:
         """
         try:
             clean = raw.strip()
-            # Strip markdown fences if model adds them despite instructions
             if clean.startswith("```"):
                 parts = clean.split("```")
                 clean = parts[1].lstrip("json").strip() if len(parts) > 1 else clean
@@ -69,7 +67,7 @@ class ClosiraAgent:
 
         self.history.append({"role": "user", "content": user_message})
 
-        raw_response = self._call_openai(self.history)
+        raw_response = self._call_groq(self.history)
         parsed = self._parse_ai_response(raw_response)
 
         reply = parsed.get("reply", "I'm sorry, I didn't catch that. Could you rephrase?")
@@ -105,7 +103,6 @@ class ClosiraAgent:
 
         summary_prompt = get_summary_prompt(self.history)
 
-        # Separate call for summary — don't pollute conversation history
         response = self.client.chat.completions.create(
             model=MODEL,
             max_tokens=1024,
@@ -115,7 +112,6 @@ class ClosiraAgent:
         raw_summary = response.choices[0].message.content
         summary = parse_summary(raw_summary)
 
-        # Inject escalation state we tracked ourselves (more reliable than AI inference)
         summary["escalation_occurred"] = self.escalated
         if self.escalated:
             summary["escalation_reason"] = self.escalation_reason

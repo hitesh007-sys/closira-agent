@@ -1,0 +1,17 @@
+{
+  "session_id": "20260524_103623",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello! Welcome to Bloom Aesthetics Clinic. \ud83c\udf38 How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "I'd like to book a filler treatment"
+    },
+    {
+      "role": "assistant",
+      "content": "Our Dermal Fillers start from \u00a3250 and can be used for lip, cheek, and jawline fillers, with results lasting 6-12 months. May I ask what brings you in today \u2014 is this your first time considering this treatment?"
+    }
+  ]
+}
